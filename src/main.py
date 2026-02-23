@@ -13,6 +13,7 @@ model.load(r"E:\training\streamin_anomaly\model\isolation_forest_model.pkl")
 generator = generate_telemetry_data(vehicle_id="VH001")
 
 for data in generator:
+    vehicle_id = data['vehicle_id']
     win = window.updates(data)
     
     if len(win) < 20:
@@ -20,4 +21,11 @@ for data in generator:
     features = extract_features(win)
     anomaly = model.scores(features)
     drift = drift_detector.update(features)
-    log_event(data['vehicle_id'], anomaly, drift)
+   
+    print(type(data))
+    log_event(vehicle_id, anomaly, drift)
+    
+    print({'vehicle_id': vehicle_id,
+    'engine_temp':data['engine_temp'],
+    'window_size': len(win),
+    'anomaly_score': anomaly})

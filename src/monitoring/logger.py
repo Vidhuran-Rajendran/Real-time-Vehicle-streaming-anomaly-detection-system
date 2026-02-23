@@ -1,3 +1,3 @@
-def log_event(vehicel_id,anomaly,drift):
-    print(f"Vehicle ID: {vehicel_id}|",f"Anomaly Detected: {anomaly}|, Drift Detected: {drift}")
+def log_event(vehicle_id, anomaly, drift):
+    print(f"Vehicle ID: {vehicle_id}|", f"Anomaly Detected: {anomaly}|, Drift Detected: {drift}")
     
